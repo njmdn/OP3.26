@@ -47,6 +47,26 @@
 					<a href="#contact" class="inline-block px-4 py-2 rounded-md bg-primary text-white text-sm shadow">Join Us</a>
 				</div>
 				<button id="menuBtn" class="md:hidden p-2 rounded-md">☰</button>
+				<!-- Mobile nav (hidden by default) -->
+				<div id="mobileNav" class="hidden fixed inset-0 z-50 bg-white/95 p-6 md:hidden">
+					<div class="flex items-center justify-between mb-6">
+						<div class="flex items-center gap-3">
+							<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold">OP</div>
+							<div>
+								<div class="font-semibold">Organisasi Sekolah</div>
+								<div class="text-xs text-slate-500">OP3.26</div>
+							</div>
+						</div>
+						<button id="mobileClose" class="p-2">✕</button>
+					</div>
+					<nav class="flex flex-col gap-4 text-lg">
+						<a href="#about" class="hover:text-primary">About</a>
+						<a href="#programs" class="hover:text-primary">Programs</a>
+						<a href="#teachers" class="hover:text-primary">Teachers</a>
+						<a href="#contact" class="hover:text-primary">Contact</a>
+						<a href="#contact" class="mt-4 inline-block px-4 py-2 rounded bg-primary text-white">Join Us</a>
+					</nav>
+				</div>
 			</div>
 		</header>
 
@@ -64,7 +84,7 @@
 					</div>
 					<div class="relative">
 						<div class="rounded-2xl bg-gradient-to-br from-primary/40 to-accent/30 p-6 shadow-xl">
-							<img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=123456" alt="Students" class="w-full h-64 object-cover rounded-lg shadow-inner">
+							<img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=123456" alt="Students" class="hero-img w-full h-64 object-cover rounded-lg shadow-inner">
 						</div>
 						<div class="absolute -bottom-6 left-6 bg-white p-4 rounded-xl shadow-lg border border-slate-100">
 							<div class="text-xs text-slate-500">Next event</div>
@@ -105,15 +125,15 @@
 						<p class="text-sm text-slate-500">Program untuk semua minat dan bakat</p>
 					</div>
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-						<article class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+						<article class="program-card p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
 							<h3 class="font-semibold">Workshop Kepemimpinan</h3>
 							<p class="text-slate-600 mt-2">Pelatihan untuk membangun karakter dan kemampuan memimpin tim.</p>
 						</article>
-						<article class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+						<article class="program-card p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
 							<h3 class="font-semibold">Klub Seni & Kreatif</h3>
 							<p class="text-slate-600 mt-2">Ruang untuk berekspresi lewat seni, musik, dan desain.</p>
 						</article>
-						<article class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+						<article class="program-card p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
 							<h3 class="font-semibold">Program Sosial</h3>
 							<p class="text-slate-600 mt-2">Kegiatan bakti sosial dan pengabdian masyarakat.</p>
 						</article>
@@ -128,22 +148,22 @@
 						<p class="text-slate-600 mt-2">Tim yang membimbing kegiatan organisasi.</p>
 					</div>
 					<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-						<div class="bg-white p-4 rounded-lg shadow text-center">
+						<div class="teacher-card bg-white p-4 rounded-lg shadow text-center">
 							<div class="w-20 h-20 mx-auto rounded-full bg-slate-100 mb-3"></div>
 							<div class="font-semibold">Ibu Sari</div>
 							<div class="text-xs text-slate-500">Pembina</div>
 						</div>
-						<div class="bg-white p-4 rounded-lg shadow text-center">
+						<div class="teacher-card bg-white p-4 rounded-lg shadow text-center">
 							<div class="w-20 h-20 mx-auto rounded-full bg-slate-100 mb-3"></div>
 							<div class="font-semibold">Pak Budi</div>
 							<div class="text-xs text-slate-500">Koordinator Kegiatan</div>
 						</div>
-						<div class="bg-white p-4 rounded-lg shadow text-center">
+						<div class="teacher-card bg-white p-4 rounded-lg shadow text-center">
 							<div class="w-20 h-20 mx-auto rounded-full bg-slate-100 mb-3"></div>
 							<div class="font-semibold">Ibu Lina</div>
 							<div class="text-xs text-slate-500">Pembina Seni</div>
 						</div>
-						<div class="bg-white p-4 rounded-lg shadow text-center">
+						<div class="teacher-card bg-white p-4 rounded-lg shadow text-center">
 							<div class="w-20 h-20 mx-auto rounded-full bg-slate-100 mb-3"></div>
 							<div class="font-semibold">Pak Arif</div>
 							<div class="text-xs text-slate-500">Pembina Kegiatan Sosial</div>
@@ -174,15 +194,84 @@
 		</footer>
 
 		<script>
-			// Simple mobile menu
-			const btn = document.getElementById('menuBtn');
-			btn.addEventListener('click', ()=> alert('Untuk demo, gunakan tautan navigasi di layar desktop.'))
-
-			// GSAP animations
 			gsap.registerPlugin(ScrollTrigger);
 
+			// Header and nav intro
 			gsap.from('header', { y: -40, opacity: 0, duration: 0.6 });
+			gsap.from('nav a', { y: -6, opacity: 0, stagger: 0.05, duration: 0.4, delay: 0.2 });
 			gsap.from('main section:first-child h1', { x: -60, opacity: 0, duration: 0.8, delay: 0.2 });
+
+			// Parallax hero image
+			if (document.querySelector('.hero-img')) {
+				gsap.to('.hero-img', {
+					yPercent: -12,
+					ease: 'none',
+					scrollTrigger: {
+						trigger: '.hero-img',
+						start: 'top bottom',
+						end: 'bottom top',
+						scrub: true
+					}
+				});
+			}
+
+			// Stagger program cards
+			gsap.from('.program-card', {
+				y: 20, opacity: 0, duration: 0.6, stagger: 0.12,
+				scrollTrigger: { trigger: '#programs', start: 'top 85%' }
+			});
+
+			// Teachers animate in and hover micro-interactions
+			gsap.from('.teacher-card', {
+				y: 20, opacity: 0, duration: 0.6, stagger: 0.08,
+				scrollTrigger: { trigger: '#teachers', start: 'top 85%' }
+			});
+
+			document.querySelectorAll('.teacher-card').forEach(card => {
+				card.style.transformOrigin = 'center';
+				card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.03, y: -4, duration: 0.18 }));
+				card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, y: 0, duration: 0.18 }));
+			});
+
+			// Contact / CTA button micro interaction
+			document.querySelectorAll('button, a').forEach(el => {
+				if (el.classList && (el.classList.contains('bg-primary') || el.classList.contains('bg-accent'))) {
+					el.addEventListener('click', () => {
+						gsap.fromTo(el, { scale: 0.98 }, { scale: 1, duration: 0.18 });
+					});
+				}
+			});
+
+			// Header shadow toggle on scroll
+			ScrollTrigger.create({
+				start: 'top top',
+				onEnter: () => document.querySelector('header').classList.add('shadow-md'),
+				onLeaveBack: () => document.querySelector('header').classList.remove('shadow-md')
+			});
+
+			// Mobile menu open/close with GSAP
+			const menuBtn = document.getElementById('menuBtn');
+			const mobileNav = document.getElementById('mobileNav');
+			const mobileClose = document.getElementById('mobileClose');
+			let mobileTL = null;
+			function openMobile() {
+				if (!mobileNav) return;
+				mobileNav.classList.remove('hidden');
+				mobileTL = gsap.timeline();
+				mobileTL.fromTo(mobileNav, { y: -20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.36, ease: 'power2.out' });
+				mobileTL.from(mobileNav.querySelectorAll('nav a'), { y: 8, opacity: 0, stagger: 0.06, duration: 0.24 }, '-=0.22');
+			}
+
+			function closeMobile() {
+				if (!mobileNav) return;
+				const tl = gsap.timeline({ onComplete: () => mobileNav.classList.add('hidden') });
+				tl.to(mobileNav, { y: -12, autoAlpha: 0, duration: 0.28, ease: 'power2.in' });
+			}
+
+			if (menuBtn) menuBtn.addEventListener('click', openMobile);
+			if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+
+			// Generic section reveal fallback
 			gsap.utils.toArray('section').forEach(section => {
 				gsap.from(section, {
 					y: 30, opacity: 0, duration: 0.8,
