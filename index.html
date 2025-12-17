@@ -1,284 +1,316 @@
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>Organisasi Sekolah — OP3.26</title>
-		<meta name="description" content="Organisasi Pelajar - modern, welcoming site with animations" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script>
-			tailwind.config = {
-				theme: {
-					extend: {
-						colors: {
-							primary: '#0ea5a4',
-							accent: '#7c3aed'
-						},
-						fontFamily: {
-							sans: ['Inter', 'ui-sans-serif', 'system-ui']
-						}
-					}
-				}
-			}
-		</script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-	</head>
-	<body class="antialiased text-slate-800 bg-gradient-to-b from-white to-slate-50 font-sans">
-		<header class="sticky top-0 z-40 bg-white/60 backdrop-blur-md border-b border-slate-200">
-			<div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-				<a href="#home" class="flex items-center gap-3">
-					<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold">OP</div>
-					<div>
-						<div class="font-semibold">Organisasi Sekolah</div>
-						<div class="text-xs text-slate-500">OP3.26 — Pelajar &amp; Kegiatan</div>
-					</div>
-				</a>
-				<nav class="hidden md:flex gap-6 items-center text-sm">
-					<a href="#about" class="hover:text-primary">About</a>
-					<a href="#programs" class="hover:text-primary">Programs</a>
-					<a href="#teachers" class="hover:text-primary">Teachers</a>
-					<a href="#contact" class="hover:text-primary">Contact</a>
-				</nav>
-				<div class="hidden md:block">
-					<a href="#contact" class="inline-block px-4 py-2 rounded-md bg-primary text-white text-sm shadow">Join Us</a>
-				</div>
-				<button id="menuBtn" class="md:hidden p-2 rounded-md">☰</button>
-				<!-- Mobile nav (hidden by default) -->
-				<div id="mobileNav" class="hidden fixed inset-0 z-50 bg-white/95 p-6 md:hidden">
-					<div class="flex items-center justify-between mb-6">
-						<div class="flex items-center gap-3">
-							<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold">OP</div>
-							<div>
-								<div class="font-semibold">Organisasi Sekolah</div>
-								<div class="text-xs text-slate-500">OP3.26</div>
-							</div>
-						</div>
-						<button id="mobileClose" class="p-2">✕</button>
-					</div>
-					<nav class="flex flex-col gap-4 text-lg">
-						<a href="#about" class="hover:text-primary">About</a>
-						<a href="#programs" class="hover:text-primary">Programs</a>
-						<a href="#teachers" class="hover:text-primary">Teachers</a>
-						<a href="#contact" class="hover:text-primary">Contact</a>
-						<a href="#contact" class="mt-4 inline-block px-4 py-2 rounded bg-primary text-white">Join Us</a>
-					</nav>
-				</div>
-			</div>
-		</header>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Organisasi Sekolah — OP3.26</title>
+    <meta name="description" content="Organisasi Pelajar - modern, welcoming site with animations" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0ea5a4',
+              accent: '#7c3aed',
+              darkbg: '#101426',
+              card: '#181f35'
+            },
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui']
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+      html, body { scroll-behavior: smooth; }
+      .bg-dot {
+        background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+      .dark .bg-dot {
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+      }
+      ::selection { background: #0ea5a470; }
+      .dark ::selection { background: #7c3aed70; }
+    </style>
+  </head>
+  <body class="antialiased font-sans text-slate-800 dark:text-slate-100 bg-gradient-to-b bg-dot from-white to-slate-100 dark:from-darkbg dark:to-[#15182b]">
+    <header class="sticky top-0 z-40 bg-white/60 dark:bg-[#15182be9] backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors shadow-none dark:shadow-none">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#home" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold">OP</div>
+          <div>
+            <div class="font-semibold">Organisasi Sekolah</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">OP3.26 — Pelajar &amp; Kegiatan</div>
+          </div>
+        </a>
+        <nav class="hidden md:flex gap-6 items-center text-sm">
+          <a href="#about" class="hover:text-primary dark:hover:text-accent transition-colors">About</a>
+          <a href="#programs" class="hover:text-primary dark:hover:text-accent transition-colors">Programs</a>
+          <a href="#teachers" class="hover:text-primary dark:hover:text-accent transition-colors">Teachers</a>
+          <a href="#contact" class="hover:text-primary dark:hover:text-accent transition-colors">Contact</a>
+        </nav>
+        <div class="hidden md:block">
+          <a href="#contact" class="inline-block px-4 py-2 rounded-md bg-primary dark:bg-accent text-white text-sm shadow-lg transition">Join Us</a>
+        </div>
+        <button id="menuBtn" class="md:hidden p-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 transition">☰</button>
+        <!-- Dark mode toggle -->
+        <button id="darkToggle" class="ml-2 p-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 transition text-slate-700 dark:text-slate-300" title="Ganti tema">
+          <span id="darkIcon" class="text-lg">🌙</span>
+        </button>
+        <!-- Mobile nav -->
+        <div id="mobileNav" class="hidden fixed inset-0 z-50 bg-white dark:bg-[#1a2036] p-6 md:hidden transition-colors">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold">OP</div>
+              <div>
+                <div class="font-semibold">Organisasi Sekolah</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400">OP3.26</div>
+              </div>
+            </div>
+            <button id="mobileClose" class="p-2 text-lg hover:bg-slate-200 dark:hover:bg-slate-700 rounded">✕</button>
+          </div>
+          <nav class="flex flex-col gap-4 text-lg">
+            <a href="#about" class="hover:text-primary dark:hover:text-accent transition">About</a>
+            <a href="#programs" class="hover:text-primary dark:hover:text-accent transition">Programs</a>
+            <a href="#teachers" class="hover:text-primary dark:hover:text-accent transition">Teachers</a>
+            <a href="#contact" class="hover:text-primary dark:hover:text-accent transition">Contact</a>
+            <a href="#contact" class="mt-4 inline-block px-4 py-2 rounded bg-primary dark:bg-accent text-white">Join Us</a>
+          </nav>
+        </div>
+      </div>
+    </header>
 
-		<main id="home" class="overflow-x-hidden">
-			<section class="pt-12">
-				<div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-					<div class="space-y-6">
-						<h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Bergabunglah dengan Organisasi Pelajar kami</h1>
-						<p class="text-slate-600 max-w-xl">Membangun kepemimpinan, kreativitas, dan rasa tanggung jawab melalui program-program bermakna. Aktivitas, workshop, dan acara sosial yang memperkaya pengalaman bersekolah.</p>
-						<div class="flex gap-4">
-							<a href="#programs" class="px-5 py-3 rounded-md bg-accent text-white font-medium shadow hover:opacity-95">Lihat Program</a>
-							<a href="#contact" class="px-5 py-3 rounded-md border border-slate-300 text-sm">Hubungi Kami</a>
-						</div>
-						<div class="mt-6 text-sm text-slate-500">Bergabunglah sekarang — tidak perlu pengalaman sebelumnya.</div>
-					</div>
-					<div class="relative">
-						<div class="rounded-2xl bg-gradient-to-br from-primary/40 to-accent/30 p-6 shadow-xl">
-							<img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=123456" alt="Students" class="hero-img w-full h-64 object-cover rounded-lg shadow-inner">
-						</div>
-						<div class="absolute -bottom-6 left-6 bg-white p-4 rounded-xl shadow-lg border border-slate-100">
-							<div class="text-xs text-slate-500">Next event</div>
-							<div class="font-semibold">Workshop Kepemimpinan — 24 Des</div>
-						</div>
-					</div>
-				</div>
-			</section>
+    <main id="home" class="overflow-x-hidden">
+      <section class="pt-14 md:pt-20 min-h-[60vh] flex items-center">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-7">
+            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight bg-gradient-to-br from-primary via-accent to-primary bg-clip-text text-transparent dark:from-accent dark:via-primary dark:to-accent animate-gradient">Bergabunglah dengan Organisasi Pelajar kami</h1>
+            <p class="text-slate-600 dark:text-slate-300 max-w-lg">Membangun kepemimpinan, kreativitas, dan rasa tanggung jawab melalui program bermakna. Aktivitas, workshop, dan acara sosial memperkaya pengalaman belajar — terbuka untuk semua siswa.</p>
+            <div class="flex gap-4">
+              <a href="#programs" class="px-5 py-3 rounded-md bg-accent text-white font-medium shadow-lg hover:scale-105 hover:shadow-xl focus:outline focus:outline-2 focus:outline-primary dark:bg-primary dark:hover:bg-accent transition-all">Lihat Program</a>
+              <a href="#contact" class="px-5 py-3 rounded-md border border-slate-300 dark:border-slate-600 text-sm bg-white/70 dark:bg-slate-900/60 text-primary dark:text-accent shadow hover:scale-105 transition-all">Hubungi Kami</a>
+            </div>
+            <div class="mt-6 text-sm text-slate-500 dark:text-slate-400">Bergabunglah sekarang — tidak perlu pengalaman sebelumnya.</div>
+          </div>
+          <div class="relative group">
+            <div class="rounded-2xl bg-gradient-to-br from-primary/40 to-accent/30 dark:from-primary/10 dark:to-accent/10 p-6 shadow-xl">
+              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=123456" alt="Students" class="hero-img w-full h-64 object-cover rounded-xl shadow-lg ring-2 ring-primary/10 dark:ring-accent/30 transition" />
+            </div>
+            <div class="absolute -bottom-7 left-9 bg-white dark:bg-slate-900/95 p-4 rounded-xl shadow-lg border border-slate-100 dark:border-slate-800">
+              <div class="text-xs text-slate-500 dark:text-slate-400">Event next</div>
+              <div class="font-semibold">Workshop Kepemimpinan — 24 Des</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-			<section id="about" class="mt-20 py-16">
-				<div class="max-w-6xl mx-auto px-6">
-					<div class="text-center mb-10">
-						<h2 class="text-2xl font-bold">Tentang Kami</h2>
-						<p class="text-slate-600 mt-2">Organisasi Pelajar yang fokus pada pengembangan soft-skill, kepemimpinan, dan kegiatan sosial di lingkungan sekolah.</p>
-					</div>
+      <section id="about" class="mt-20 py-16">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="text-center mb-10">
+            <h2 class="text-2xl font-bold text-primary dark:text-accent">Tentang Kami</h2>
+            <p class="text-slate-600 dark:text-slate-300 mt-2">Organisasi Pelajar fokus pada pengembangan soft-skill, kepemimpinan, dan kegiatan sosial sekolah.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-6 bg-white dark:bg-card rounded-xl shadow transition hover:scale-105 hover:ring-2 hover:ring-primary/40 dark:hover:ring-accent/40 duration-200">
+              <h3 class="font-semibold">Visi</h3>
+              <p class="text-slate-600 dark:text-slate-300 mt-2">Mencetak generasi pemimpin yang bertanggung jawab dan berdaya saing.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-card rounded-xl shadow transition hover:scale-105 hover:ring-2 hover:ring-primary/40 dark:hover:ring-accent/40 duration-200">
+              <h3 class="font-semibold">Misi</h3>
+              <p class="text-slate-600 dark:text-slate-300 mt-2">Menyelenggarakan kegiatan edukatif, sosial, dan kreatif untuk semua siswa.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-card rounded-xl shadow transition hover:scale-105 hover:ring-2 hover:ring-primary/40 dark:hover:ring-accent/40 duration-200">
+              <h3 class="font-semibold">Nilai</h3>
+              <p class="text-slate-600 dark:text-slate-300 mt-2">Integritas, kolaborasi, inovasi, dan empati.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-						<div class="p-6 bg-white rounded-xl shadow">
-							<h3 class="font-semibold">Visi</h3>
-							<p class="text-slate-600 mt-2">Mencetak generasi pemimpin yang bertanggung jawab dan berdaya saing.</p>
-						</div>
-						<div class="p-6 bg-white rounded-xl shadow">
-							<h3 class="font-semibold">Misi</h3>
-							<p class="text-slate-600 mt-2">Menyelenggarakan kegiatan edukatif, sosial, dan kreatif untuk semua siswa.</p>
-						</div>
-						<div class="p-6 bg-white rounded-xl shadow">
-							<h3 class="font-semibold">Nilai</h3>
-							<p class="text-slate-600 mt-2">Integritas, kolaborasi, inovasi, dan empati.</p>
-						</div>
-					</div>
-				</div>
-			</section>
+      <section id="programs" class="py-16 bg-gradient-to-b from-slate-50 to-white dark:from-[#181f35] dark:to-[#232748]">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
+            <h2 class="text-2xl font-bold text-primary dark:text-accent">Program Kami</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-300">Program untuk semua minat dan bakat</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article class="program-card p-6 bg-white dark:bg-card rounded-xl shadow hover:shadow-xl hover:scale-105 transition-all">
+              <h3 class="font-semibold">Workshop Kepemimpinan</h3>
+              <p class="text-slate-600 dark:text-slate-300 mt-2">Pelatihan untuk membangun karakter dan kemampuan memimpin tim.</p>
+            </article>
+            <article class="program-card p-6 bg-white dark:bg-card rounded-xl shadow hover:shadow-xl hover:scale-105 transition-all">
+              <h3 class="font-semibold">Klub Seni & Kreatif</h3>
+              <p class="text-slate-600 dark:text-slate-300 mt-2">Ruang untuk berekspresi melalui seni, musik, dan desain.</p>
+            </article>
+            <article class="program-card p-6 bg-white dark:bg-card rounded-xl shadow hover:shadow-xl hover:scale-105 transition-all">
+              <h3 class="font-semibold">Program Sosial</h3>
+              <p class="text-slate-600 dark:text-slate-300 mt-2">Kegiatan bakti sosial & pengabdian masyarakat.</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-			<section id="programs" class="py-16 bg-gradient-to-b from-slate-50 to-white">
-				<div class="max-w-6xl mx-auto px-6">
-					<div class="flex items-center justify-between mb-8">
-						<h2 class="text-2xl font-bold">Program Kami</h2>
-						<p class="text-sm text-slate-500">Program untuk semua minat dan bakat</p>
-					</div>
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-						<article class="program-card p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
-							<h3 class="font-semibold">Workshop Kepemimpinan</h3>
-							<p class="text-slate-600 mt-2">Pelatihan untuk membangun karakter dan kemampuan memimpin tim.</p>
-						</article>
-						<article class="program-card p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
-							<h3 class="font-semibold">Klub Seni & Kreatif</h3>
-							<p class="text-slate-600 mt-2">Ruang untuk berekspresi lewat seni, musik, dan desain.</p>
-						</article>
-						<article class="program-card p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
-							<h3 class="font-semibold">Program Sosial</h3>
-							<p class="text-slate-600 mt-2">Kegiatan bakti sosial dan pengabdian masyarakat.</p>
-						</article>
-					</div>
-				</div>
-			</section>
+      <section id="teachers" class="py-16">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="text-center mb-10">
+            <h2 class="text-2xl font-bold text-primary dark:text-accent">Pembina & Guru</h2>
+            <p class="text-slate-600 dark:text-slate-300 mt-2">Tim yang membimbing kegiatan organisasi.</p>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="teacher-card bg-white dark:bg-card p-4 rounded-lg shadow text-center hover:scale-105 transition">
+              <div class="w-20 h-20 mx-auto rounded-full bg-slate-100 dark:bg-slate-600 mb-3 flex items-center justify-center text-3xl text-primary dark:text-accent">👩‍🏫</div>
+              <div class="font-semibold">Ibu Sari</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Pembina</div>
+            </div>
+            <div class="teacher-card bg-white dark:bg-card p-4 rounded-lg shadow text-center hover:scale-105 transition">
+              <div class="w-20 h-20 mx-auto rounded-full bg-slate-100 dark:bg-slate-600 mb-3 flex items-center justify-center text-3xl text-primary dark:text-accent">👨‍💼</div>
+              <div class="font-semibold">Pak Budi</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Koordinator Kegiatan</div>
+            </div>
+            <div class="teacher-card bg-white dark:bg-card p-4 rounded-lg shadow text-center hover:scale-105 transition">
+              <div class="w-20 h-20 mx-auto rounded-full bg-slate-100 dark:bg-slate-600 mb-3 flex items-center justify-center text-3xl text-primary dark:text-accent">🎨</div>
+              <div class="font-semibold">Ibu Lina</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Pembina Seni</div>
+            </div>
+            <div class="teacher-card bg-white dark:bg-card p-4 rounded-lg shadow text-center hover:scale-105 transition">
+              <div class="w-20 h-20 mx-auto rounded-full bg-slate-100 dark:bg-slate-600 mb-3 flex items-center justify-center text-3xl text-primary dark:text-accent">🤝</div>
+              <div class="font-semibold">Pak Arif</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Pembina Kegiatan Sosial</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-			<section id="teachers" class="py-16">
-				<div class="max-w-6xl mx-auto px-6">
-					<div class="text-center mb-10">
-						<h2 class="text-2xl font-bold">Pembina & Guru</h2>
-						<p class="text-slate-600 mt-2">Tim yang membimbing kegiatan organisasi.</p>
-					</div>
-					<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-						<div class="teacher-card bg-white p-4 rounded-lg shadow text-center">
-							<div class="w-20 h-20 mx-auto rounded-full bg-slate-100 mb-3"></div>
-							<div class="font-semibold">Ibu Sari</div>
-							<div class="text-xs text-slate-500">Pembina</div>
-						</div>
-						<div class="teacher-card bg-white p-4 rounded-lg shadow text-center">
-							<div class="w-20 h-20 mx-auto rounded-full bg-slate-100 mb-3"></div>
-							<div class="font-semibold">Pak Budi</div>
-							<div class="text-xs text-slate-500">Koordinator Kegiatan</div>
-						</div>
-						<div class="teacher-card bg-white p-4 rounded-lg shadow text-center">
-							<div class="w-20 h-20 mx-auto rounded-full bg-slate-100 mb-3"></div>
-							<div class="font-semibold">Ibu Lina</div>
-							<div class="text-xs text-slate-500">Pembina Seni</div>
-						</div>
-						<div class="teacher-card bg-white p-4 rounded-lg shadow text-center">
-							<div class="w-20 h-20 mx-auto rounded-full bg-slate-100 mb-3"></div>
-							<div class="font-semibold">Pak Arif</div>
-							<div class="text-xs text-slate-500">Pembina Kegiatan Sosial</div>
-						</div>
-					</div>
-				</div>
-			</section>
+      <section id="contact" class="py-16 bg-slate-50 dark:bg-[#171c32]">
+        <div class="max-w-4xl mx-auto px-6">
+          <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-primary dark:text-accent">Hubungi Kami</h2>
+            <p class="text-slate-600 dark:text-slate-300 mt-2">Tertarik bergabung atau ingin bertanya? Kirim pesan singkat.</p>
+          </div>
+          <form class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white dark:bg-card p-8 rounded-xl shadow">
+            <input class="border p-3 rounded dark:bg-slate-800 dark:border-slate-700" placeholder="Nama" />
+            <input class="border p-3 rounded dark:bg-slate-800 dark:border-slate-700" placeholder="Email" />
+            <input class="md:col-span-2 border p-3 rounded dark:bg-slate-800 dark:border-slate-700" placeholder="Subjek" />
+            <textarea class="md:col-span-2 border p-3 rounded h-28 dark:bg-slate-800 dark:border-slate-700" placeholder="Pesan"></textarea>
+            <button type="button" class="md:col-span-2 px-5 py-3 rounded bg-primary dark:bg-accent text-white font-bold shadow-lg hover:scale-105 transition-all ring-2 ring-primary dark:ring-accent">Kirim Pesan</button>
+          </form>
+        </div>
+      </section>
+    </main>
 
-			<section id="contact" class="py-16 bg-slate-50">
-				<div class="max-w-4xl mx-auto px-6">
-					<div class="text-center mb-8">
-						<h2 class="text-2xl font-bold">Hubungi Kami</h2>
-						<p class="text-slate-600 mt-2">Tertarik bergabung atau bertanya? Kirim pesan singkat.</p>
-					</div>
-					<form class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-8 rounded-xl shadow">
-						<input class="border p-3 rounded" placeholder="Nama" />
-						<input class="border p-3 rounded" placeholder="Email" />
-						<input class="md:col-span-2 border p-3 rounded" placeholder="Subjek" />
-						<textarea class="md:col-span-2 border p-3 rounded h-28" placeholder="Pesan"></textarea>
-						<button type="button" class="md:col-span-2 px-5 py-3 rounded bg-primary text-white">Kirim Pesan</button>
-					</form>
-				</div>
-			</section>
-		</main>
+    <footer class="border-t dark:border-slate-700 mt-12 py-6 bg-white dark:bg-[#181f35] transition-colors">
+      <div class="max-w-6xl mx-auto px-6 text-sm text-slate-500 dark:text-slate-400">© 2026 Organisasi Pelajar — OP3.26. Dibuat dengan Tailwind & GSAP.</div>
+    </footer>
 
-		<footer class="border-t mt-12 py-6 bg-white">
-			<div class="max-w-6xl mx-auto px-6 text-sm text-slate-500">© 2026 Organisasi Pelajar — OP3.26. Dibuat dengan Tailwind & GSAP.</div>
-		</footer>
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
 
-		<script>
-			gsap.registerPlugin(ScrollTrigger);
+      // Animasi fade/slide dari bawah setiap section
+      gsap.utils.toArray('section').forEach((section, i) => {
+        gsap.from(section, {
+          y: 50, opacity: 0, duration: 0.7,
+          scrollTrigger: { trigger: section, start: 'top 85%' }
+        });
+      });
+      // Animasi header masuk
+      gsap.from('header', { y: -40, opacity: 0, duration: .6, delay: .15 });
+      // Nav slide
+      gsap.from('nav a', { y: -12, opacity: 0, stagger: .08, duration: .5, delay: .4 });
+      // Hero headline left fade
+      gsap.from('main section:first-child h1', { x: -60, opacity: 0, duration: .8, delay: .25 });
+      // Parallax hero image
+      if (document.querySelector('.hero-img')) {
+        gsap.to('.hero-img', {
+          yPercent: -12,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero-img',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+      }
+      // Stagger program cards
+      gsap.from('.program-card', {
+        y: 20, opacity: 0, duration: 0.7, stagger: 0.13,
+        scrollTrigger: { trigger: '#programs', start: 'top 85%' }
+      });
+      // Teachers animate in dan micro-interaction
+      gsap.from('.teacher-card', {
+        y: 28, opacity: 0, duration: 0.7, stagger: 0.09,
+        scrollTrigger: { trigger: '#teachers', start: 'top 85%' }
+      });
+      document.querySelectorAll('.teacher-card').forEach(card => {
+        card.style.transformOrigin = 'center';
+        card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.07, y: -2, duration: 0.18 }));
+        card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, y: 0, duration: 0.18 }));
+      });
+      // Button micro interaction
+      document.querySelectorAll('button, a').forEach(el => {
+        if (el.classList && (el.classList.contains('bg-primary') || el.classList.contains('bg-accent'))) {
+          el.addEventListener('click', () => {
+            gsap.fromTo(el, { scale: 0.96 }, { scale: 1, duration: 0.18 });
+          });
+        }
+      });
+      // Header shadow toggle on scroll
+      ScrollTrigger.create({
+        start: 'top top',
+        onEnter: () => document.querySelector('header').classList.add('shadow-md', 'dark:shadow-lg'),
+        onLeaveBack: () => document.querySelector('header').classList.remove('shadow-md', 'dark:shadow-lg'),
+      });
 
-			// Header and nav intro
-			gsap.from('header', { y: -40, opacity: 0, duration: 0.6 });
-			gsap.from('nav a', { y: -6, opacity: 0, stagger: 0.05, duration: 0.4, delay: 0.2 });
-			gsap.from('main section:first-child h1', { x: -60, opacity: 0, duration: 0.8, delay: 0.2 });
+      // Mobile menu open/close with GSAP
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileClose = document.getElementById('mobileClose');
+      let mobileTL = null;
+      function openMobile() {
+        if (!mobileNav) return;
+        mobileNav.classList.remove('hidden');
+        mobileTL = gsap.timeline();
+        mobileTL.fromTo(mobileNav, { y: -20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .36, ease: 'power2.out' });
+        mobileTL.from(mobileNav.querySelectorAll('nav a'), { y: 8, opacity: 0, stagger: 0.05, duration: 0.22 }, '-=0.2');
+      }
+      function closeMobile() {
+        if (!mobileNav) return;
+        const tl = gsap.timeline({ onComplete: () => mobileNav.classList.add('hidden') });
+        tl.to(mobileNav, { y: -12, autoAlpha: 0, duration: .22, ease: 'power2.in' });
+      }
+      if (menuBtn) menuBtn.addEventListener('click', openMobile);
+      if (mobileClose) mobileClose.addEventListener('click', closeMobile);
 
-			// Parallax hero image
-			if (document.querySelector('.hero-img')) {
-				gsap.to('.hero-img', {
-					yPercent: -12,
-					ease: 'none',
-					scrollTrigger: {
-						trigger: '.hero-img',
-						start: 'top bottom',
-						end: 'bottom top',
-						scrub: true
-					}
-				});
-			}
-
-			// Stagger program cards
-			gsap.from('.program-card', {
-				y: 20, opacity: 0, duration: 0.6, stagger: 0.12,
-				scrollTrigger: { trigger: '#programs', start: 'top 85%' }
-			});
-
-			// Teachers animate in and hover micro-interactions
-			gsap.from('.teacher-card', {
-				y: 20, opacity: 0, duration: 0.6, stagger: 0.08,
-				scrollTrigger: { trigger: '#teachers', start: 'top 85%' }
-			});
-
-			document.querySelectorAll('.teacher-card').forEach(card => {
-				card.style.transformOrigin = 'center';
-				card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.03, y: -4, duration: 0.18 }));
-				card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, y: 0, duration: 0.18 }));
-			});
-
-			// Contact / CTA button micro interaction
-			document.querySelectorAll('button, a').forEach(el => {
-				if (el.classList && (el.classList.contains('bg-primary') || el.classList.contains('bg-accent'))) {
-					el.addEventListener('click', () => {
-						gsap.fromTo(el, { scale: 0.98 }, { scale: 1, duration: 0.18 });
-					});
-				}
-			});
-
-			// Header shadow toggle on scroll
-			ScrollTrigger.create({
-				start: 'top top',
-				onEnter: () => document.querySelector('header').classList.add('shadow-md'),
-				onLeaveBack: () => document.querySelector('header').classList.remove('shadow-md')
-			});
-
-			// Mobile menu open/close with GSAP
-			const menuBtn = document.getElementById('menuBtn');
-			const mobileNav = document.getElementById('mobileNav');
-			const mobileClose = document.getElementById('mobileClose');
-			let mobileTL = null;
-			function openMobile() {
-				if (!mobileNav) return;
-				mobileNav.classList.remove('hidden');
-				mobileTL = gsap.timeline();
-				mobileTL.fromTo(mobileNav, { y: -20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.36, ease: 'power2.out' });
-				mobileTL.from(mobileNav.querySelectorAll('nav a'), { y: 8, opacity: 0, stagger: 0.06, duration: 0.24 }, '-=0.22');
-			}
-
-			function closeMobile() {
-				if (!mobileNav) return;
-				const tl = gsap.timeline({ onComplete: () => mobileNav.classList.add('hidden') });
-				tl.to(mobileNav, { y: -12, autoAlpha: 0, duration: 0.28, ease: 'power2.in' });
-			}
-
-			if (menuBtn) menuBtn.addEventListener('click', openMobile);
-			if (mobileClose) mobileClose.addEventListener('click', closeMobile);
-
-			// Generic section reveal fallback
-			gsap.utils.toArray('section').forEach(section => {
-				gsap.from(section, {
-					y: 30, opacity: 0, duration: 0.8,
-					scrollTrigger: { trigger: section, start: 'top 85%' }
-				});
-			});
-		</script>
-	</body>
+      // Dark mode toggle
+      const darkToggle = document.getElementById('darkToggle');
+      const html = document.documentElement;
+      const icon = document.getElementById('darkIcon');
+      function updateDarkIcon(isDark) {
+        icon.textContent = isDark ? '☀️' : '🌙';
+      }
+      if (darkToggle) {
+        darkToggle.addEventListener('click', () => {
+          const dark = html.classList.toggle('dark');
+          localStorage.setItem('theme', dark ? 'dark' : 'light');
+          updateDarkIcon(dark);
+        });
+        // On load, follow preference
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          html.classList.add('dark'); updateDarkIcon(true);
+        } else {
+          html.classList.remove('dark'); updateDarkIcon(false);
+        }
+      }
+    </script>
+  </body>
 </html>
-
